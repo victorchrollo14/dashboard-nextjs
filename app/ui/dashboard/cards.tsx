@@ -6,6 +6,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { garamond } from '@/app/ui/fonts';
 
+
 const iconMap = {
   collected: BanknotesIcon,
   customers: UserGroupIcon,
@@ -14,6 +15,7 @@ const iconMap = {
 };
 
 export default async function CardWrapper() {
+  
   return (
     <>
       {/* NOTE: comment in this code when you get to this point in the course */}
@@ -40,7 +42,7 @@ export function Card({
   type: 'invoices' | 'customers' | 'pending' | 'collected';
 }) {
   const Icon = iconMap[type];
-
+  
   return (
     <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
       <div className="flex p-4">
