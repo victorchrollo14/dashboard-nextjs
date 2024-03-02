@@ -11,7 +11,6 @@ import {
   Customer,
 } from './definitions';
 import { formatCurrency } from './utils';
-import Error from '../dashboard/invoices/error';
 
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.
@@ -226,7 +225,7 @@ export async function fetchFilteredCustomers(query: string) {
     return customers;
   } catch (err) {
     console.error('Database Error:', err);
-    throw new Error('Failed to fetch customer table.');
+    throw new Error('Failed to fetch customer table.') as Error;
   }
 }
 
