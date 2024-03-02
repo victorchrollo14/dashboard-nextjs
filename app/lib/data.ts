@@ -8,8 +8,10 @@ import {
   LatestInvoiceRaw,
   User,
   Revenue,
+  Customer,
 } from './definitions';
 import { formatCurrency } from './utils';
+import Error from '../dashboard/invoices/error';
 
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.
@@ -225,6 +227,18 @@ export async function fetchFilteredCustomers(query: string) {
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch customer table.');
+  }
+}
+
+export async function getCustomers() {
+  noStore();
+  try {
+    const customers = await sql`SELECT * FROM customers`;
+    console.log(customers.rows);
+    return customers.rows as Customer[];
+  } catch (error) {
+    console.log('Failed to fetch User:', error);
+    throw new Error('Failed to fetch user');
   }
 }
 

@@ -12,7 +12,7 @@ export default async function InvoicesTable({
   currentPage: number;
 }) {
   const invoices = await fetchFilteredInvoices(query, currentPage);
-
+  console.log(invoices);
   return (
     <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
@@ -32,6 +32,7 @@ export default async function InvoicesTable({
                         width={28}
                         height={28}
                         alt={`${invoice.name}'s profile picture`}
+                        unoptimized
                       />
                       <p>{invoice.name}</p>
                     </div>
